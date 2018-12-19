@@ -136,7 +136,7 @@ trap clean EXIT HUP INT TERM
 	error "$DEVICE is not a block device"
 
 [ ${#IMAGE} -gt 0 ] && {
-	printf %s $IMAGE | grep -qE '^[[:alnum:]_-]+/[[:alnum:]_-]+$' ||
+	printf "%s" $IMAGE | grep -qE '^[[:alnum:]_-]+/[[:alnum:]_-]+$' ||
 		error "The image name must match the extended regular expression: '^[[:alnum:]_-]+/[[:alnum:]_-]+$'."
 }
 
@@ -220,7 +220,7 @@ case $COMMAND in
 
 			} || {
 
-				printf %s $URL | grep -q '^.*zsync$' &&
+				printf "%s" $URL | grep -q '^.*zsync$' &&
 					zsync -o $ZNX_DIR/$IMG_DIR/$IMAGE/$ACTIVE_IMAGE $URL ||
 					axel -a -o $ZNX_DIR/$IMG_DIR/$IMAGE/$ACTIVE_IMAGE $URL ||
 					error "Failed to deploy $IMAGE."
